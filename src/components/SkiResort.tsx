@@ -1,25 +1,31 @@
 
-import { FullSnowReport } from "../types/SnowReport";
+import { ResortReport } from "../types/SnowReport";
 
-export default function SkiResort(s: FullSnowReport) {
-
+export default function SkiResort(s: ResortReport) {
   return (
-    <div className="w-full bg-blue-900 bg-opacity-50 px-2 py-3 rounded shadow-lg">
-      <div className="flex space-x-2">
-        <h1 className="text-lg font-bold">{s.name}</h1>
+    <div className="bg-blue-900 bg-opacity-50 p-4 m-4 rounded shadow-lg">
+      <div className="flex flex-col space-x-2">
+        <h1 className="text-lg font-bold">{s.resolvedAddress}</h1>
       </div>
       
-      <p className="font-semibold">Current Weather</p>
-      <div className="flex space-x-6">
-        <p>{s.current_temp_c}°C</p>
-        <p>{s.precipitation_status}</p>
+      <div className="py-1">
+        <h2>{s.description}</h2>
       </div>
 
-      <p className="font-semibold">Snow Fall</p>
-      <div className="flex space-x-6">
-        <p>Next 24 Hours: {s.snow_fall_1_day.toFixed(1)}cm</p>
-        <p>Next 3 days: {s.snow_fall_3_days.toFixed(1)}cm</p>
-        <p>Next 7 days: {s.snow_fall_5_days.toFixed(1)}cm</p>
+      <div className="py-1">
+        <p className="font-semibold">Current Weather</p>
+        <div className="flex space-x-6">
+          <p className="font-bold">{s.CurrentConditions.temp}°C</p>
+          <p> <span className="font-bold">{s.CurrentConditions.precipprob}%</span> chance of rain/snow</p>
+          <p><span className="font-bold">{s.CurrentConditions.visibility}m</span> Visibility</p>
+        </div>
+      </div>
+
+      <div className="py-1">
+        <p className="font-semibold">Snow Fall</p>
+        <div className="flex space-x-6">
+          <p>{s.CurrentConditions.snowdepth}</p>
+        </div>
       </div>
     </div>
   )

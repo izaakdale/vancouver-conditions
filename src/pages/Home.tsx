@@ -1,38 +1,39 @@
 import { useEffect, useState } from 'react';
-import { FullSnowReport } from '../types/SnowReport';
+import { SnowReport } from '../types/SnowReport';
 import SkiResort from '../components/SkiResort';
+import axios from 'axios';
 
 export default function Home() {
   
-  const [message, setMessage] = useState<FullSnowReport>();
+  const [message, setMessage] = useState<SnowReport>();
+
+  let url = import.meta.env.VITE_BACKEND_WEBSOCKET_ADDR;
+
+  async function getData() {
+
+    let resp = await axios.get(url+"/stub")
+    if (resp) {
+      setMessage(resp.data);
+    } else {
+      console.log("error");
+    }
+  }
 
   useEffect(() => {
-    let url = import.meta.env.VITE_BACKEND_WEBSOCKET_ADDR;
-    const ws = new WebSocket(url);
-
-    ws.onmessage = function (event) {
-      const json = JSON.parse(event.data);
-      setMessage(json);
-    };
-
-    return () => {
-      if (ws.readyState === ws.OPEN) {
-        ws.close();
-      }
-    };
+    getData()
   }, []);
 
   if(!message) {
     return <div className="">loading...</div>
   }
 
-  return <div className='flex w-full justify-center space-x-8'>
-    {message ? 
-    <div className="w-full p-4 text-gray-300">
-      <SkiResort {...message}/>
-    </div> : 
-    ''}
-
-  </div>;
-
+  return <div className='flex flex-col w-full mt-4'>
+    {message &&
+      <ul className='sm:grid sm:grid-cols-2 lg:grid-cols-2'>
+        {message.data.map((resort) => {
+          return <SkiResort {...resort}/>
+        })}
+      </ul>
+    }
+  </div>
 }
