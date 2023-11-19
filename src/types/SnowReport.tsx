@@ -3,6 +3,10 @@ export interface SnowReport {
 }
 
 export interface ResortReport {
+	latitude: number
+	longitude: number
+  webcamurl: string
+  forecasturl: string
   description: string
   resolvedAddress: string
   Days: Day[]
