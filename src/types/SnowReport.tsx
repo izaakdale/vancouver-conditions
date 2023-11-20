@@ -7,6 +7,7 @@ export interface ResortReport {
 	longitude: number
   webcamurl: string
   forecasturl: string
+  googlemapsurl: string
   title: string
   description: string
   resolvedAddress: string

@@ -11,7 +11,7 @@ export default function Home() {
 
   async function getData() {
 
-    let resp = await axios.get(url+"/resort-data")
+    let resp = await axios.get(url+"/stub")
     if (resp) {
       setMessage(resp.data);
     } else {
@@ -27,7 +27,7 @@ export default function Home() {
     return <div className="">loading...</div>
   }
 
-  return <div className='flex flex-col w-full mt-4'>
+  return <div className='flex flex-col w-full'>
     {message &&
       <ul className='sm:grid sm:grid-cols-2 lg:grid-cols-2'>
         {message.data.map((resort,idx) => {

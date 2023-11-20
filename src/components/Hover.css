@@ -4,4 +4,7 @@
     
 .iconToHover:hover + .hiddenUntilHover {
   display: block;
+}   
+.iconToHover:active + .hiddenUntilHover {
+  display: block;
 }
