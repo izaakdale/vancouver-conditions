@@ -7,12 +7,27 @@ export interface ResortReport {
 	longitude: number
   webcamurl: string
   forecasturl: string
+  title: string
   description: string
   resolvedAddress: string
   Days: Day[]
   CurrentConditions: CurrentConditions
-  alerts: any[]
+  alerts: Alert[]
 }
+
+export interface Alert {
+  description: string
+  ends: string
+  endsEpoch: number
+  event: string
+  headline: string
+  id: string
+  language: string
+  link: string
+  onset: string
+  onsetEpoch: number
+}
+
 
 export interface Day {
   datetime: string

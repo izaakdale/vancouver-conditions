@@ -1,0 +1,7 @@
+.hiddenUntilHover {
+  display: none;
+}
+    
+.iconToHover:hover + .hiddenUntilHover {
+  display: block;
+}
