@@ -7,11 +7,11 @@ export default function Home() {
   
   const [message, setMessage] = useState<SnowReport>();
 
-  let url = import.meta.env.VITE_BACKEND_WEBSOCKET_ADDR;
+  let url = import.meta.env.VITE_BACKEND_HTTP_ADDR;
 
   async function getData() {
 
-    let resp = await axios.get(url+"/stub")
+    let resp = await axios.get(url+"/resort-data")
     if (resp) {
       setMessage(resp.data);
     } else {
