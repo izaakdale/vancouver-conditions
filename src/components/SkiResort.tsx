@@ -25,11 +25,11 @@ export default function SkiResort(s: ResortReport) {
 
           <h1 className="text-lg font-bold">{s.title}</h1>
           { s.alerts.length > 0 && 
-          <div className="flex items-center">
+          <div className="flex items-center relative">
             <div className="right-0 iconToHover">
-              <GoAlert className="text-3xl text-yellow-300"/>
+              <GoAlert className="text-3xl text-amber-300"/>
             </div> 
-            <div className="absolute w-[70%] sm:w-[40%] right-20 mt-2 hiddenUntilHover bg-black bg-opacity-90 p-2 rounded">
+            <div className="absolute w-[1000%] right-10 hiddenUntilHover bg-black bg-opacity-90 p-2 rounded border-[1px] border-amber-200">
               <p className="">{s.alerts[0].headline}</p>
             </div>
           </div>
