@@ -14,6 +14,13 @@ export interface ResortReport {
   Days: Day[]
   CurrentConditions: CurrentConditions
   alerts: Alert[]
+  snowfall: Snowfall
+}
+
+export interface Snowfall {
+  next_1_days: number,
+  next_3_days: number,
+  next_7_days: number
 }
 
 export interface Alert {

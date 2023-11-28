@@ -51,13 +51,24 @@ export default function SkiResort(s: ResortReport) {
             <p className="font-bold">{s.CurrentConditions.temp}°C</p>
             <p><span className="font-bold">{s.CurrentConditions.precipprob}%</span> Precip</p>
             <p><span className="font-bold">{s.CurrentConditions.visibility}m</span> Visibility</p>
+            <p>Base <span className="font-bold">{s.CurrentConditions.snowdepth}cm</span></p>
           </div>
         </div>
 
         <div className="py-1">
-          <div className="flex space-x-6">
-            <p className="font-semibold">Base Snow Depth</p>
-            <p>{s.CurrentConditions.snowdepth}</p>
+          <div className="flex space-x-6 items-center">
+            <p className="font-semibold">Snowfall</p>
+            <div className="flex space-x-5">
+              <div>
+                <p>24 hours: <span className="font-bold">{s.snowfall.next_1_days}cm</span></p>
+              </div>
+              <div>
+                <p>3 days: <span className="font-bold">{s.snowfall.next_3_days}cm</span></p>
+              </div>
+              <div>
+                <p>7 days: <span className="font-bold">{s.snowfall.next_7_days}cm</span></p>
+              </div>
+            </div>
           </div>
         </div>
 
