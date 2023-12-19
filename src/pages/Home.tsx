@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { SnowReport } from '../types/SnowReport';
 import SkiResort from '../components/SkiResort';
 import axios from 'axios';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Home() {
   
@@ -24,7 +25,9 @@ export default function Home() {
   }, []);
 
   if(!message) {
-    return <div className="">loading...</div>
+    return <div className="">
+      <LoadingSpinner/>
+    </div>
   }
 
   return <div className='flex flex-col w-full'>
